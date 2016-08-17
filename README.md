@@ -1,5 +1,5 @@
 # Format and Philosophy of ACSObjects Package
-The ACSObjects package contains a set of classes that allow the user to organize and analyze data gathered from Pixhawk flash logs in a meaningful way.
+The ACSObjects package contains a set of classes that allow the user to organize and analyze data gathered from Pixhawk flash logs in a meaningful way. This code was written with a very specific use case in mind. While many tools exist to analyze single pixhawk logs, there is not much in the way of software to analyze the performance of many pixhawk-using vehicles simultaneously. The ARSENL UAV swarm project that this code was written for has had 50 UAVs flying simultaneously. This package provides tools for working with data from projects like these. To easily support this paradigm, the data files must be stored in a very specific way as will be described (see "Preconditions for Using ACSObjects").
 
 ## Sortie
 A "Sortie" is defined as a single aircraft's flight, from launch to landing. These Sortie objects will include data from before and after the flight as well (they contain all data from the log file generated during flight).
@@ -108,6 +108,13 @@ pdoc ACSObjects --html --html-dir <output_directory>
 If there is already documentation in the specified output folder then the above command needs to be called with the --overwrite flag.
 
 ## Notes for Further Development
+Unfortunately, I haven't had much time to test this code on the target data. As a result there are some areas of the code that probably need refinement.
+
 If more methods are added to any of the classes in this module, it is possible that they should be added to the `analyze` method of the corresponding class. Not all new methods need to be called by `analyze`. However, any data that will be wanted frequently and does not take long t o run should have a corresponding method call in `analzye`.
 
 A similar decision must be made regarding the `summarize` method. `summarize` will print summary information about an Event, Mission, or Sortie to a text file. Any new methods that return data deemed to be relevant in this format should be called in the `summarize` method in the corresponding class.
+
+## Contact
+I currently have no plans to add to or change this code. However, if anyone stumbles upon this and has a desire to expand upon the code here, I am more than happy to collaborate and provide further information about the thought process behind developing this so far.
+
+Email: aray.york@gmail.com
